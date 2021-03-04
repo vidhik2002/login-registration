@@ -17,7 +17,7 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             print("hi")
-            return redirect("/")
+            return redirect("/index")
         else:
             messages.info(request, "invalid credentials")
             return redirect("login")
@@ -47,7 +47,7 @@ def register(request):
             else:
                 user = User.objects.create_user(first_name=first_name, username=username, password=password1, email=email, last_name=last_name)
                 user.save()
-                return redirect("home")
+                return redirect("index")
         else:
             print("Password Not Matching")
             return redirect('register')

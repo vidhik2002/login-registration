@@ -8,3 +8,10 @@ def home(request):
         return redirect('/')
 
     return render(request, 'home.html', {})
+
+
+def index(request):
+    if request.method == "POST":
+        return redirect('/index')
+
+    return render(request, 'index.html', {})
