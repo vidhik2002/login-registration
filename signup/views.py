@@ -16,7 +16,6 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            print("hi")
             return redirect("/index")
         else:
             messages.info(request, "invalid credentials")
@@ -34,7 +33,7 @@ def register(request):
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
 
-        if None in [first_name, last_name, username, email, password1,password2]:
+        if None in [first_name, last_name, username, email, password1, password2]:
             messages.info(request, "Please fill all fields")
             return redirect("register")
         if password1 == password2:
@@ -49,7 +48,7 @@ def register(request):
                 user.save()
                 return redirect("index")
         else:
-            print("Password Not Matching")
+            messages.info(request, "Password Not Matching")
             return redirect('register')
         return redirect("/")
 
